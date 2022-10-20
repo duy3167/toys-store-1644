@@ -80,7 +80,7 @@ class IndexController{
         let proName = req.params.name
         let shopId = req.shopId
         indexModel.getPro(shopId, proName).then((result) => {
-            if(result.rowCount !== 0){
+            if(result.length !== 0){
                 res.send({status:200, product: result})
             } else {
                 res.send({status:404, mess: 'Not found product'})
