@@ -109,6 +109,8 @@ $(document).ready(function (){
                     }
                 }
             })
+        }else{
+            alert("Please, enter product name")
         }
     })
 
