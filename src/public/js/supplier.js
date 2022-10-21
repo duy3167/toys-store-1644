@@ -27,6 +27,43 @@ $(document).ready(function (){
         })
     }
 
+    $('#btn_search_supplier').click(function (){
+        let supName =  $('#txt_search_sup').val()
+        if(supName !== ''){
+            $.ajax({
+                url: '/supplier-search/'+supName,
+                type: 'GET',
+                beforeSend: animation(),
+                success: function (data){
+                    if(data.status === 200){
+                        renderSupplierFound(data.supplier)
+                    } else {
+                        animation()
+                        alert('Not found supplier')
+                    }
+                }
+            })
+        }else{
+            alert("Please, enter name supplier")
+        }
+    })
+
+    function renderSupplierFound(supplier){
+        var supList = ''
+        for (let i = 0; i < supplier.length; i++) {
+            var supplierHTML = ` <tr>
+            <th scope="row">${ i + 1 }</th>
+            <td>${ supplier[i].sup_name }</td>
+            <td>${ supplier[i].sup_address }</td>
+        </tr>`
+        
+            supList += supplierHTML
+        }
+        $('.sup-body').empty()
+        $('.sup-body').append(supList)
+        animation()
+    }
+
     function animation(){
         if($('.overlay-screen').css('display') == 'none')
         {

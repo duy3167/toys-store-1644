@@ -26,6 +26,42 @@ $(document).ready(function (){
         })
     }
 
+    $('#btn_search_category').click(function (){
+        let cateName =  $('#txt_search_cate').val()
+        if(cateName !== ''){
+            $.ajax({
+                url: '/category-search/'+cateName,
+                type: 'GET',
+                beforeSend: animation(),
+                success: function (data){
+                    if(data.status === 200){
+                        renderCategoryFound(data.category)
+                    } else {
+                        animation()
+                        alert('Not found category')
+                    }
+                }
+            })
+        }else{
+            alert("Please, enter name category")
+        }
+    })
+
+    function renderCategoryFound(category){
+        var cateList = ''
+        for (let i = 0; i < category.length; i++) {
+            var categoryHTML = ` <tr>
+            <th scope="row">${i + 1 }</th>
+            <td>${category[i].cate_name }</td>
+            </tr>`
+        
+            cateList += categoryHTML
+        }
+        $('.cate-body').empty()
+        $('.cate-body').append(cateList)
+        animation()
+    }
+
     function animation(){
         if($('.overlay-screen').css('display') == 'none')
         {

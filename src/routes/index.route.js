@@ -25,10 +25,12 @@ function route(app)
     // //category
     app.get('/category', authentication.checkCookieAdmin, indexController.cateList)
     app.post('/category-new', authentication.checkCookieAdmin,indexController.newCate)
+    app.get('/category-search/:name', authentication.checkCookieAdmin, indexController.searchCate)
 
     // //supplier
     app.get('/supplier', authentication.checkCookieAdmin, indexController.supList)
     app.post('/supplier-new', authentication.checkCookieAdmin, indexController.newSup)
+    app.get('/supplier-search/:name', authentication.checkCookieAdmin, indexController.searchSup)
 
     //404
     app.get('*', indexController.NotFond404)

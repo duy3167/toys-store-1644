@@ -107,6 +107,19 @@ class IndexController{
             })
     }
 
+    searchCate(req, res){
+        let cateName = req.params.name
+        indexModel.searchCateAdmin(cateName).then((result) => {
+            if(result.length !== 0){
+                res.send({status:200, category: result})
+            } else {
+                res.send({status:404, mess: 'Not found product'})
+            }
+        })
+    }
+
+    
+
     //supplier
     supList(req, res){
         indexModel.getSupList().then((result) => {
@@ -124,6 +137,17 @@ class IndexController{
                 }
             })
 
+    }
+
+    searchSup(req, res){
+        let supName = req.params.name
+        indexModel.searchSupAdmin(supName).then((result) => {
+            if(result.length !== 0){
+                res.send({status:200, supplier: result})
+            } else {
+                res.send({status:404, mess: 'Not found product'})
+            }
+        })
     }
 
     custSearchPro(req, res){

@@ -128,6 +128,13 @@ class IndexModel{
         return database.query(`insert into category(cate_name) values ('${cateName}')`)
     }
 
+    searchCateAdmin(cateName){
+        return database.query(`select cate_name from category where cate_name like '%${cateName}%'`)
+            .then((result) => {
+                return result.rows
+            })
+    }
+
     //supplier
     getSupList(){
         return database.query(`select * from supplier`)
@@ -138,6 +145,13 @@ class IndexModel{
 
     insertSup(supName, address){
         return database.query(`insert into supplier(sup_name, sup_address) values ('${supName}', '${address}')`)
+    }
+
+    searchSupAdmin(supName){
+        return database.query(`select sup_name from supplier where sup_name like '%${supName}%'`)
+            .then((result) => {
+                return result.rows
+            })
     }
 }
 
