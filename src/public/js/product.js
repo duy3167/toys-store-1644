@@ -105,7 +105,7 @@ $(document).ready(function (){
                         renderProductFound(data.product)
                     } else {
                         animation()
-                        alert('Not found')
+                        alert('Not found product')
                     }
                 }
             })
