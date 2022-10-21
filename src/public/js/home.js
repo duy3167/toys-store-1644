@@ -32,7 +32,10 @@ $(document).ready(function (){
                     alert('something wrong!')
                 }
             })
+        }else{
+            alert("Please, enter product name")
         }
+
     }
 
 
