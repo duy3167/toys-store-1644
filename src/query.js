@@ -1,7 +1,7 @@
 const database = require('../src/database/connect')
 
 
-database.query(`insert into users(username, password) values ('admin3', '12345')`)
+database.query(`insert into users(username, password) values ('nvtam', '12345')`)
     .then((result) => {
         console.log(result.rows)
     })
