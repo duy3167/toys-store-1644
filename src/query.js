@@ -1,10 +1,9 @@
 const database = require('../src/database/connect')
 
 
-database.query(`insert into users(username, password) values ('admin1', '12345')`)
+database.query(`insert into users(username, password) values ('admin3', '12345')`)
     .then((result) => {
         console.log(result.rows)
-        database.end()
     })
 // database.query(`delete from shop returning *`)
 //     .then((result) => {
